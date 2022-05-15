@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AI PROFESSOR</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static',filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-blue py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <img src="./static/img/logo-white.png" alt="logo" width="320" height="80">                
+            </div>                       
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <div class="row border-top border-info mx-xl-2">
+    </div>
+    <div class="container-fluid py-5">
+        <div class="row px-xl-5">
+            <!-- Content Start -->
+            <h4 class="font-weight-semi-bold">{{ index }}
+                <form action="/speak" method="GET">
+                    <input type="hidden" name="article" value="{{ content[index] }}"></input>
+                    <input type="hidden" name="title" value="{{ index }}"></input>
+                    <i class="fas fa-volume-up text-primary mr-1"></i>
+                    <input class="btn btn-sm text-primary p-0" accesskey='r' type="submit" value="Read Article"></input>
+                </form>
+            </h4>    
+            
+            <p class="mb-5">{{ content[index] }}</p>
+                 
+                
+            
+            <!-- Content End -->
+        </div>        
+    </div>
+
+
+
+
+  
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>

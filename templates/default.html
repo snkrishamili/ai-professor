@@ -1,0 +1,89 @@
+
+{% block content %}   
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>AI Professor</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ url_for('static',filename='styles/styles.css') }}" rel="stylesheet">
+        
+    </head>
+    <body class="bg-light">
+        <!-- Navigation-->
+        <nav class="navbar navbar-light static-top">
+              
+            <div class="container">
+                <i class=""></i>
+                <a href="/help" accesskey = "h">Click to hear voice command</a>
+            </div>                          
+                <br>
+                <br>
+                <br>
+                              
+            </div>
+        </nav>
+        <!-- Masthead-->
+        <header class="masthead1">
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-xl-6">
+                        <div class="text-center text-white">
+                            <img src="./static/img/logo-white.png" alt="logo" width="400" height="100">  
+                                <br>
+                                <br>  
+                                <div class="row">
+                                    <form name="search_form" action="/search" method="GET">
+                                        <div class="input-group">
+                                            <input name="search" type="text" class="form-control" placeholder="Type to search" value="{{ recognized_text }}"></input>
+                                            <p> hi  </p>
+                                            
+                                            <a href="/voice_search" accesskey = "s"><i class="bi-mic-fill fs-3"></i></a>
+                                            
+                                        </div>
+                                    </form>                                           
+                                </div>
+                                
+                            
+                        </div>
+                        
+
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+       
+       
+        
+       
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+    </body>
+</html>
+
+{% endblock %}      
+
+
+
+
+  
+
+
+    

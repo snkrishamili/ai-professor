@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% block content %}   
+<div class="container-fluid py-5">
+  <div class="row px-xl-5">
+      <div class="col-lg-3 pb-5">
+          <!-- Navbar Start -->
+          <div class="container-fluid mb-5">
+          
+          <!-- filter Start -->
+          <div class="border-bottom mb-4 pb-4" Id="result">
+              
+              <form name="refine_form" action="/filter_data" method="GET">               
+
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by Classification</h5> 
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="class" value="Business" class="custom-control-input" id="price-all">
+                            <label class="custom-control-label" for="price-all">Business</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="class" value="Entertainment" class="custom-control-input" id="price-1">
+                            <label class="custom-control-label" for="price-1">Entertainment</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="class" value="Politics" class="custom-control-input" id="price-2">
+                            <label class="custom-control-label" for="price-2">Politics</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="class" value="Sports" class="custom-control-input" id="price-4">
+                            <label class="custom-control-label" for="price-4">Sports</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="class" value="Technology" class="custom-control-input" id="price-5">
+                            <label class="custom-control-label" for="price-5">Technology</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div>                       
+                </div>
+                
+
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by location</h5>
+                    {% for facet in query_results.get_facets()['locations']: %}                        
+                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                            <input type="checkbox" name="locations" value="{{ facet['value'] }}" class="custom-control-input" id="{{ facet['value'] }}">
+                            <label class="custom-control-label" for="{{ facet['value'] }}">{{ facet['value'] }}</label>
+                            <span class="badge border font-weight-normal"></span>
+                        </div> 
+                    {% endfor %}
+                </div>    
+                <div class="border-bottom mb-4 pb-4">
+                    <h5 class="font-weight-semi-bold mb-4">Filter by People</h5> 
+                    {% for facet in query_results.get_facets()['people']: %}                        
+                    <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                        <input type="checkbox" name="people" value="{{ facet['value'] }}" class="custom-control-input" id="{{ facet['value'] }}">
+                        <label class="custom-control-label" for="{{ facet['value'] }}">{{ facet['value'] }}</label>
+                        <span class="badge border font-weight-normal"></span>
+                    </div> 
+                {% endfor %}
+                </div>
+                <div class="border-bottom mb-4 pb-4">
+                <h5 class="font-weight-semi-bold mb-4">Filter by Organizations</h5>
+                {% for facet in query_results.get_facets()['organizations']: %}                        
+                <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
+                    <input type="checkbox" name="organizations" value="{{ facet['value'] }}" class="custom-control-input" id="{{ facet['value'] }}">
+                    <label class="custom-control-label" for="{{ facet['value'] }}">{{ facet['value'] }}</label>
+                    <span class="badge border font-weight-normal"></span>
+                </div> 
+                {% endfor %}
+                </div>
+                <button name="refine" class="btn btn-sm btn-light py-2 px-3" type="submit" value="Refine Result"></button>
+            </form>
+          </div>
+          <!-- filter End -->
+                      
+          </div>
+          <!-- Navbar End -->
+
+          
+      </div>
+        
+            <!-- Content Start -->
+            <div class="col-lg-9 pb-5">
+                <div class="d-flex pt-2">
+                        
+                    <p class="btn btn-sm text-gray font-weight-semi-bold p-0"><i class="fas fa-bullseye text-gray"></i> Results Found :</p>
+                    <div class="d-inline-flex">
+                        <a class="text-gray px-2" href="">
+                            {{ query_results.get_count() }}
+                        </a>                           
+                    </div>
+                    
+                    
+                    <div class="d-inline-flex">
+                        <form action="/speak_detail" method="GET">
+                            <i class="fas fa-volume-up text-primary mr-1"></i>
+                            <input class="btn btn-sm text-primary font-weight-semi-bold p-0" accesskey='r' type="submit" value="Read Article"></input>
+                        </form>                          
+                    </div>
+                </div>   
+                
+                <!--search result-->
+                {% for result,class,entity,keyphrase in search_results: %}
+                    <h4 class="mb-3 text-primary">{{ entity[0] }}</h4>
+                    <p>{{ result }}</p>                    
+
+                    <div class="d-flex pt-2">
+                        
+                        <p class="btn btn-sm text-primary p-0"><i class="fas fa-book text-primary"></i> Classfied Category :</p>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                {{ class[0] }}
+                            </a>                           
+                        </div>
+                        
+                        <p class="btn btn-sm text-primary p-0"><i class="fas fa-check-double text-primary"></i> Confidence Score :</p>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                {{ class[1] }}
+                            </a>                           
+                        </div>
+                        <form action="/fullarticle" method="GET">
+                            <input type="hidden" name="title" value="{{ entity[0] }}"></input>
+                            <i class="fas fa-eye text-primary mr-1"></i>
+                            <input class="btn btn-sm text-primary p-0" type="submit" value="Click To View Full Article"></input>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        
+                        <p class="btn btn-sm text-primary p-0"><i class="fas fa-bars text-primary mr-1"></i> Keyphrases</p>
+                        <div class="d-flex mb-5 text-sm text-primary">
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[0]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[1]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[2]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[3]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[4]}}</a>
+                        </div>
+                    </div>
+                    
+                    
+                  
+                {% endfor %}               
+                
+            </div>
+            <!-- Content End -->
+
+      
+     
+  </div>        
+</div>
+
+{% endblock %} 
+ 
+ 
+
+
+
+  
+
+
+    
