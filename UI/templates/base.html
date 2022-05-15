@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>AI PROFESSOR</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet"> 
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static',filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static',filename='styles/style.css') }}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Topbar Start -->
+    <div class="container-fluid">
+        <div class="row bg-blue py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center py-3 px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block">
+                <!--<a href="/" class="text-decoration-none">
+                    <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">AI</span>PROFESSOR</h1>
+                </a>-->
+                <img src="./static/img/logo-white.png" alt="logo" width="320" height="80">
+            </div>
+            <div class="col-lg-6 col-6 text-left">
+                <form name="search_form" action="/search" method="GET">
+                    <div class="input-group">
+                        <input name="search" type="text" class="form-control" placeholder="Type to search" value="{{ search_terms }}"></input>
+                        <div class="input-group-append">
+                            <button type="submit" accesskey='s' class="input-group-text bg-transparent text-primary"><i class="fa fa-search"></i></button>
+                            
+                            </input>
+                        </div>                        
+                        
+                    </div>
+                </form>
+            </div>            
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <div class="row border-top border-info mx-xl-2">
+    </div>
+    {% block content %} {% endblock %} 
+
+    
+
+
+
+  
+
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+    
+</body>
+
+</html>

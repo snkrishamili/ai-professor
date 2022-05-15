@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}   
+<div class="container-fluid py-5">
+  <div class="row px-xl-5">
+             
+            <!-- Content Start -->
+            <div class="col-lg-12 pb-5">
+                <!--search result-->
+                {% for summary ,class,entity,keyphrase in filtered_data: %}
+                    <h4 class="mb-3 text-primary">{{ entity }}</h4>
+                    <p>{{ summary }}</p>
+
+                    <div class="d-flex pt-2">
+                        
+                        <p class="btn btn-sm text-primary p-0"><i class="fas fa-book text-primary"></i> Classfied Category :</p>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                {{ class[0] }}
+                            </a>                           
+                        </div>
+                        
+                        <p class="btn btn-sm text-primary p-0"><i class="fas fa-check-double text-primary"></i> Confidence Score :</p>
+                        <div class="d-inline-flex">
+                            <a class="text-dark px-2" href="">
+                                {{ class[1] }}
+                            </a>                           
+                        </div>
+                        <form action="/fullarticle" method="GET">
+                            <input type="hidden" name="title" value="{{ entity }}"></input>
+                            <i class="fas fa-eye text-primary mr-1"></i>
+                            <input class="btn btn-sm text-primary p-0" type="submit" value="Click To View Full Article"></input>
+                        </form>
+                    </div>
+                    
+                    <div>
+                        
+                        <p class="btn btn-sm text-primary p-0"><i class="fas fa-bars text-primary mr-1"></i> Keyphrases</p>
+                        <div class="d-flex mb-5 text-sm text-primary">
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[0]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[1]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[2]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[3]}}</a>
+                        <a href="" class="btn btn-sm btn-light py-2 px-3">{{ keyphrase[4]}}</a>
+                        </div>
+                    </div>
+                                                                         
+                  
+                {% endfor %}               
+                
+            </div>
+            <!-- Content End -->
+
+      
+     
+  </div>        
+</div>
+
+{% endblock %} 
+ 
+ 
+
+
+
+  
+
+
+    
